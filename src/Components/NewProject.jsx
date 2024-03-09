@@ -1,29 +1,47 @@
-import logo from '../assets/no-projects.png';
-import {useState} from 'react';
+import { useRef, useState } from 'react';
+import Input from './Input';
+import Button from './Button';
 
 export default function NewProject() {
-    const [newProject, setNewProject] = useState(false);
-    function handleProjectCreation(){
-        return (
-        setNewProject((prevProject)=> !prevProject)
-        )
-    }
-    return(
-        <>
-        <img src={logo} alt="" />
-        <h2>No Project Selected</h2>
-        <p>Select a project or get started with a new one</p>
-        <button>Create new project</button>
+    // const name = useRef(null);
+    // const description = useRef(null);
+    // const date = useRef(null);
+    // const [projects, setAddProject] = useState([{
+    //     name: "",
+    //     description: "",
+    //     date: ""
+    // }]);
 
-        <h3>Your Project</h3>
-        <button> + Add Project </button>
+    // function handleCancel() {
+    //     name.current.value = "";
+    //     description.current.value = "";
+    //     date.current.value = "";
+    // }
 
-        {newProject?
-        <form>
-            <label>Please add a new Project:- </label>
-            <input type="text" />
-        </form>: ""}
-        </>
+    // function handleSave() {
+    //     setAddProject((projects) => {
+    //         return [...projects, {
+    //             name: name.current.value,
+    //             description: description.current.value,
+    //             date: date.current.value
+    //         }];
+    //     })
+    // }
+    return (
+        < div className="w-[35rem]">
+            <menu className="flex item-center justify-end gap-4 my-4">
+                <li>
+                    <button className="text-stone-800 hover:text-stone-950">Cancel</button>
+                </li>
+                <li>
+                    <button className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:text-stone-950">Save</button>
+                </li>
+            </menu>
+            <div>
+                <Input label={"Name"} />
+                <Input label={"Description"} textarea/>
+                <Input label={"Due Date"}/>
+            </div>
+        </div>
     )
 }
-
